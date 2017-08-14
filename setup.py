@@ -52,7 +52,7 @@ if __name__ == "__main__":
         with open("README.rst", "wb") as readme:
             readme.write(long_description)
     else:
-        long_description = open("README.rst").read()
+        long_description = open("README.md").read()
     top_package_plat_files_file = "dtls_package_files"
     if dist:
         if plat_dist:
