@@ -170,7 +170,7 @@ def _SSLSocket_init(self, sock=None, keyfile=None, certfile=None,
         # see if it's connected
         try:
             socket.getpeername(self)
-        except socket_error, e:
+        except socket_error as e:
             if e.errno != errno.ENOTCONN:
                 raise
             # no, no connection yet
