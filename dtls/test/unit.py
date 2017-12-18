@@ -609,7 +609,7 @@ class AsyncoreEchoServer(threading.Thread):
                     elif err.args[0] == ssl.SSL_ERROR_EOF:
                         return self.handle_close()
                     raise
-                except socket.error, err:
+                except socket.error as err:
                     if err.args[0] == errno.ECONNABORTED:
                         return self.handle_close()
                 else:
