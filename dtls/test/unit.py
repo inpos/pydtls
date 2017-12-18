@@ -67,7 +67,7 @@ class BasicTests(unittest.TestCase):
         try:
             ssl.sslwrap_simple(socket.socket(AF_INET4_6,
                                              socket.SOCK_DGRAM)._sock)
-        except IOError, e:
+        except IOError as e:
             if e.errno == 32: # broken pipe when ssl_sock.do_handshake(), this test doesn't care about that
                 pass
             else:
