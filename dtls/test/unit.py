@@ -601,7 +601,7 @@ class AsyncoreEchoServer(threading.Thread):
             def _do_ssl_handshake(self):
                 try:
                     self.socket.do_handshake()
-                except ssl.SSLError, err:
+                except ssl.SSLError as err:
                     if err.args[0] in (ssl.SSL_ERROR_WANT_READ,
                                        ssl.SSL_ERROR_WANT_WRITE,
                                        ssl.SSL_ERROR_SSL):
@@ -861,10 +861,10 @@ def bad_cert_test(certfile):
                                 certfile=certfile,
                                 ssl_version=ssl.PROTOCOL_DTLSv1)
             s.connect((HOST, server.port))
-        except ssl.SSLError, x:
+        except ssl.SSLError as x:
             if test_support.verbose:
                 sys.stdout.write("\nSSLError is %s\n" % x[1])
-        except socket.error, x:
+        except socket.error as x:
             if test_support.verbose:
                 sys.stdout.write("\nsocket.error is %s\n" % x[1])
         else:
