@@ -38,9 +38,9 @@ import socket
 from logging import getLogger
 from os import path
 from datetime import timedelta
-from err import openssl_error
-from err import SSL_ERROR_NONE
-from util import _EC_KEY, _BIO
+from .err import openssl_error
+from .err import SSL_ERROR_NONE
+from .util import _EC_KEY, _BIO
 import ctypes
 from ctypes import CDLL
 from ctypes import CFUNCTYPE

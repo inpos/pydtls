@@ -35,10 +35,10 @@ from logging import getLogger
 
 import ssl
 import socket
-from patch import do_patch
+from .patch import do_patch
 do_patch()
-from sslconnection import SSLContext, SSL
-import err as err_codes
+from .sslconnection import SSLContext, SSL
+import .err as err_codes
 
 _logger = getLogger(__name__)
 

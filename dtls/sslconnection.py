@@ -50,17 +50,17 @@ from os import urandom
 from select import select
 from weakref import proxy
 
-from err import openssl_error, InvalidSocketError
-from err import raise_ssl_error
-from err import SSL_ERROR_WANT_READ, SSL_ERROR_SYSCALL
-from err import ERR_WRONG_VERSION_NUMBER, ERR_COOKIE_MISMATCH, ERR_NO_SHARED_CIPHER
-from err import ERR_NO_CIPHER, ERR_HANDSHAKE_TIMEOUT, ERR_PORT_UNREACHABLE
-from err import ERR_READ_TIMEOUT, ERR_WRITE_TIMEOUT
-from err import ERR_BOTH_KEY_CERT_FILES, ERR_BOTH_KEY_CERT_FILES_SVR, ERR_NO_CERTS
-from x509 import _X509, decode_cert
-from tlock import tlock_init
-from openssl import *
-from util import _Rsrc, _BIO
+from .err import openssl_error, InvalidSocketError
+from .err import raise_ssl_error
+from .err import SSL_ERROR_WANT_READ, SSL_ERROR_SYSCALL
+from .err import ERR_WRONG_VERSION_NUMBER, ERR_COOKIE_MISMATCH, ERR_NO_SHARED_CIPHER
+from .err import ERR_NO_CIPHER, ERR_HANDSHAKE_TIMEOUT, ERR_PORT_UNREACHABLE
+from .err import ERR_READ_TIMEOUT, ERR_WRITE_TIMEOUT
+from .err import ERR_BOTH_KEY_CERT_FILES, ERR_BOTH_KEY_CERT_FILES_SVR, ERR_NO_CERTS
+from .x509 import _X509, decode_cert
+from .tlock import tlock_init
+from .openssl import *
+from .util import _Rsrc, _BIO
 
 _logger = getLogger(__name__)
 

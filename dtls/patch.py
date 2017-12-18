@@ -34,18 +34,19 @@ has the following effects:
       PROTOCOL_DTLSv1 for the parameter ssl_version is supported
 """
 
-from socket import socket, getaddrinfo, _delegate_methods, error as socket_error
+# from socket import socket, getaddrinfo, _delegate_methods, error as socket_error
+from socket import socket, getaddrinfo, error as socket_error
 from socket import AF_INET, SOCK_STREAM, SOCK_DGRAM
 from ssl import PROTOCOL_SSLv23, CERT_NONE
 from types import MethodType
 from weakref import proxy
 import errno
 
-from sslconnection import SSLConnection, PROTOCOL_DTLS, PROTOCOL_DTLSv1, PROTOCOL_DTLSv1_2
-from sslconnection import DTLS_OPENSSL_VERSION_NUMBER, DTLS_OPENSSL_VERSION, DTLS_OPENSSL_VERSION_INFO
-from sslconnection import SSL_BUILD_CHAIN_FLAG_NONE, SSL_BUILD_CHAIN_FLAG_UNTRUSTED, \
+from .sslconnection import SSLConnection, PROTOCOL_DTLS, PROTOCOL_DTLSv1, PROTOCOL_DTLSv1_2
+from .sslconnection import DTLS_OPENSSL_VERSION_NUMBER, DTLS_OPENSSL_VERSION, DTLS_OPENSSL_VERSION_INFO
+from .sslconnection import SSL_BUILD_CHAIN_FLAG_NONE, SSL_BUILD_CHAIN_FLAG_UNTRUSTED, \
     SSL_BUILD_CHAIN_FLAG_NO_ROOT, SSL_BUILD_CHAIN_FLAG_CHECK, SSL_BUILD_CHAIN_FLAG_IGNORE_ERROR, SSL_BUILD_CHAIN_FLAG_CLEAR_ERROR
-from err import raise_as_ssl_module_error, patch_ssl_errors
+from .err import raise_as_ssl_module_error, patch_ssl_errors
 
 
 def do_patch():
@@ -158,11 +159,11 @@ def _SSLSocket_init(self, sock=None, keyfile=None, certfile=None,
     else:
         socket.__init__(self, _sock=sock.get_socket(True)._sock)
     # Copy instance initialization from SSLSocket class
-    for attr in _delegate_methods:
-        try:
-            delattr(self, attr)
-        except AttributeError:
-            pass
+    #for attr in _delegate_methods:
+    #    try:
+    #        delattr(self, attr)
+    #    except AttributeError:
+    #        pass
 
     if certfile and not keyfile:
         keyfile = certfile

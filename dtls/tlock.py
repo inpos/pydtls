@@ -25,7 +25,7 @@ threading support. It does not have client-visible components.
 """
 
 from logging import getLogger
-from openssl import *
+from .openssl import *
 
 try:
     import threading
